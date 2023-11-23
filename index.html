@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <style>
+        html,body{margin: 0;padding:0;font-family: 'poppins', sans-serif;}
+        a{cursor: pointer;}
+        .download-body{
+            background-image: url(bg.png);
+            background-size: cover;
+            height: 100vh;
+        }
+        .header-wrapper{background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(15, 32, 51, 0.00) 100%);height: 124px;}
+        .header{padding: 30px;max-width:1600px;margin: 0 auto;display: flex;justify-content: space-between;align-items: center;}
+        .header-logo img{max-width: 240px;}
+        .header-logo,.header-nav{display: inline-block;margin:0;padding:0;vertical-align: middle;}
+        .header-nav {text-align: right;}
+        .header-nav ul{margin: 0;padding:0;}
+        .header-nav ul li{display: inline-block; vertical-align: middle;}
+        .header-nav ul li:last-child{margin-left: 20px;}
+        .header-nav ul li a{padding: 10px 16px;color: #E0E0E0;text-decoration: none;font-size: 18px;font-weight: bold;}
+        .header-nav ul li a img{vertical-align: middle; margin-left: 4px;max-width: 24px;}
+        .hero-wrapper{height: calc(100vh - 124px);position: relative;}
+        .hero{width: 100%;max-width:1200px;margin: 0 auto;color: white;height: calc(100vh - 124px);display: flex;flex-direction: row;justify-content: left;align-items: center;position: relative;}
+        .hero-content{max-width: 520px;padding: 0 30px;z-index: 1;}
+        .hero-content h1{font-size: 62px;margin-bottom: 10px;}
+        .hero-content p{font-size: 18px;margin-bottom: 20px;line-height: 1.5;}
+        .hero-main-top{margin-bottom: 50px;}
+        .hero-content .main-action img{height: 66px;margin-top:10px;}
+        .hero-image{text-align: center;position: absolute;bottom:0;right:0;display: flex;justify-content: center;}
+        .other-download-links{max-width: 700px;width: 100%;}
+        .other-download-links img{margin-right: 20px;margin-bottom: 20px;height: 30px;}
+        .mobile-menu{display: none;}
+        @media (max-width: 991px) {
+            .hero-content .hero-main-top{
+                display: block;
+            }
+            .hero-content .main-action{margin-left: 0px;}
+            .hero-content{margin: 0 auto;}
+            .hero-image{text-align: center;position: relative;bottom:unset;right:unset;}
+            .hero-image img{max-height: 500px;}
+            .hero{
+                display: block;
+                height: unset;
+                text-align: center;
+            }
+            .download-body{height: 100%;}
+            .hero-wrapper{height: unset;}
+            .mobile-menu{display: inline-block;}
+            .mobile-menu img{max-width: 42px;}
+            .header-nav{display: none;}
+        }
+    </style>
+</head>
+<body>
+    <div class="download-body">
+        <div class="header-wrapper">
+            <div class="header">
+                <div class="header-logo">
+                    <img src="logo.png" alt="">
+                </div>
+                <div class="header-nav">
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Leaderboard</a></li>
+                        <li><a href="#">Plans</a></li>
+                        <li><a href="#">More <img src="more.png" alt=""></a></li>
+                        <li class="login-btn"><a href="#">Login <img src="gear.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="mobile-menu">
+                    <a href="#"><img src="mobile-menu.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wrapper">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-main-top">
+                        <div class="main-content">
+                            <h1>Download Game</h1>
+                            <p>Launch your games, connect with friends, and keep up-to-date with the latest news.</p>
+                        </div>
+                        <div class="main-action">
+                            <a href="#"><img src="download-btn.png" alt=""></a>
+                        </div>
+                    </div>
+                    <p>Also available on:</p>
+                    <div class="other-download-links">
+                        <a href=""><img src="steam.png" alt=""></a>
+                        <a href=""><img src="windows-store.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="main-char.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
