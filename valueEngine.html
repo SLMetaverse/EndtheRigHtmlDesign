@@ -4,8 +4,398 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Value Engine</title>
+    <style>
+        html,body{margin: 0;padding:0;font-family: 'poppins', sans-serif;}
+        a{cursor: pointer;}
+        .value-engine-body{
+            background-color: #1D1D22;
+            background-image: url(/ve/ve-bg.png);
+            background-size: cover;
+            height: 100vh;
+        }
+        .header-wrapper{background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(15, 32, 51, 0.00) 100%);height: 124px;}
+        .header{padding: 20px 30px;margin: 0 auto;display: flex;justify-content: space-between;align-items: center;}
+        .header-logo img{max-width: 240px;}
+        .header-logo,.header-nav{display: inline-block;margin:0;padding:0;vertical-align: middle;}
+        .header-nav {text-align: left;}
+        .header-nav ul{margin: 0;padding:0;display: inline-block;}
+        .header-nav ul li{display: inline-block; vertical-align: middle;}
+        .header-nav ul li:last-child{margin-left: 20px;}
+        .header-nav ul li a{padding: 10px 16px;color: #E0E0E0;text-decoration: none;font-size: 30px;font-weight: bold; text-shadow: 0 2px 2px #0000004d, 0 -2px 2px #0000004d, 2px 0px 2px #0000004d, -2px 0px 2px #0000004d;}
+        .header-nav ul li a img{max-height: 38px;margin-right: 10px;vertical-align: middle;display: inline-block;}
+        .header-nav .level-badge {position: relative;display: inline-block;vertical-align: middle;margin-right: 30px;}
+        .header-nav .level-badge a {display: inline-block;color: #E0E0E0;text-decoration: none;font-size: 22px;font-weight: bold;}
+        .header-nav .level-badge img {max-width: 60px;margin-right: 0;display: block;}
+        .header-nav .level-badge span {position: absolute;left: 50%;top:45%;transform: translate(-50%, -50%);}
+        .mobile-menu{display: none;}
+        .value-engine-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 124px);
+        }
+        .mainWrapper{
+            max-width: 1400px;
+            width:100%;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+        .mainWrapper h3{
+            text-shadow: 0 1px 1px #0000004d, 0 -1px 1px #0000004d, 1px 0px 1px #0000004d, -1px 0px 1px #0000004d;
+            font-size: 20px;
+            margin:0;
+            margin-bottom: 20px;
+        }
+        .closeBtn{
+            position: absolute;
+            right: 35px;
+            top: 35px;
+            max-width: 20px;
+            cursor: pointer;
+        }
+        .closeBtn img{
+            max-width: 18px;
+        }
+        .mainWrapper .mainContent{
+            background: rgba(11, 101, 200, 0.70);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow-y: auto;
+        }
+        .mainWrapper .ctaButton{
+            background: 
+                linear-gradient(#fff, #fff) padding-box,
+                linear-gradient(60deg, #025CC0, #4AA0FF) border-box;
+            color: #313149;
+            padding: 12px 16px;
+            border: 8px solid transparent;
+            border-radius: 60px;
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .mainWrapper .ctaButton .hotKey{
+            border: 1px solid black;
+            padding: 1px 5px;
+            margin-right: 8px;
+            border-radius: 2px;
+            background-color: #E1E1E1;
+            text-shadow: 0 2px 2px #ffffff, 0 -2px 2px #ffffff, 2px 0px 2px #ffffff, -2px 0px 2px #ffffff;
+        }
+        .table-wrapper{
+            display: flex;
+            justify-content: stretch;
+            background-color: white;
+            color: black;
+            border-radius: 8px;
+            overflow: hidden;
+            min-width: 1080px;
+
+        }
+        .table-wrapper .table-col{
+            display: block;
+            flex: auto;
+            font-weight: bold;
+        }
+        .table-wrapper .table-col .table-cell-head{
+            padding: 12px 8px;
+            background-color: #7EAEE1;
+            display: block;
+            color: white;
+            text-shadow: 0 1px 1px #00000048, 0 -1px 1px #00000048, 1px 0px 1px #00000048, -1px 0px 1px #00000048;
+            border-right: 1px solid #a6c7eb59;
+
+        }
+        .table-wrapper .table-col .table-cell{
+            padding: 12px 8px;
+            border-bottom: 1px solid #a6c7eb33;
+            border-right: 1px solid #a6c7eb33;
+        }
+        .table-wrapper .col-level .table-cell{
+            text-align: left;
+        }
+        .table-wrapper .col-level .table-cell input{
+            visibility: visible;
+        }
+        .table-wrapper .table-or{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F2F2F2;
+            width: 0;
+            
+        }
+        .table-wrapper .table-cell input{
+            visibility: hidden;
+        }
+        .table-wrapper .table-cell label{
+            margin-left: 6px;
+        }
+        .table-wrapper .table-cell{
+            position: relative;
+            overflow: hidden;
+        }
+        .table-wrapper .value-col .table-cell label{
+            cursor: pointer;
+            width: 100%;
+            position:absolute;
+            height: 100%;
+            right: 0;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 8px;
+        }
+        .table-wrapper .value-col input{
+            width:0;
+        }
+        .table-wrapper .value-col img{
+            max-width: 20px;
+            position: absolute;
+            left: 20px;
+        }
+        .table-wrapper .value-col input:checked + label{
+            background-color: #27AE60;
+            color: white;
+            text-shadow: 0 1px 1px #00000048, 0 -1px 1px #00000048, 1px 0px 1px #00000048, -1px 0px 1px #00000048;
+        }
+        .select-row{background-color: #D4D9FA;}
+        .table-wrapper .table-or .table-cell{
+            border-bottom: none;
+            background-color: lightgray;
+            height: 9px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:gray;
+        }
+        .table-wrapper .table-or::after{
+            content: '';
+            background-color: #7EAEE1;
+            position: absolute;
+            top:0;
+            left: 0;
+            width:100%;
+            height: 42px;
+            border-right: 1px solid #a6c7eb59;
+        }
+        @media (max-width: 991px) {
+            .mobile-menu{display: inline-block;}
+            .mobile-menu img{max-width: 42px;}
+            .header-nav ul{display: none;}
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="value-engine-body">
+        <div class="header-wrapper">
+            <div class="header">
+                <div class="header-nav">
+                    <div class="level-badge"><a href="/valueEngine.html"><img src="level-bg.png" alt=""><span>5</span></a></div>
+                    <ul>
+                        <li><a href="#"><img src="/ve/gem_orange.png" alt="">320</a></li>
+                        <li><a href="#"><img src="/ve/gem-blue.png" alt="">25</a></li>
+                        <li><a href="#"><img src="/ve/gem-green.png" alt="">12</a></li>
+                    </ul>
+                </div>
+                <div class="header-nav">
+                    <ul>
+                        <li><a href="#"><img src="/ve/ember.png" alt=""><span>15</span></a></li>
+                        <li><a href="#"><img src="/ve/p_gem.png" alt="">32</a></li>
+                        <li><a href="#"><img src="/ve/p_gem2.png" alt="">7</a></li>
+                    </ul>
+                </div>
+                <div class="mobile-menu">
+                    <a href="#"><img src="mobile-menu.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="value-engine-wrapper">
+            <div class="mainWrapper">
+                <div class="mainContent">
+                    <h3>What level of value engine</h3>
+                    <div class="closeBtn"><img src="ve/close.png" alt=""></div>
+                    <div class="table-wrapper">
+                        <div class="table-col col-level">
+                            <div class="table-cell-head">Level</div>
+                            <div class="table-cell">
+                                <input id="radio1" name="level" type="radio"><label for="radio1">Label 1</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="radio2" name="level" type="radio"><label for="radio2">Label 2</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="radio3" name="level" type="radio"><label for="radio3">Label 3</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="radio4" name="level" type="radio"><label for="radio4">Label 4</label>
+                            </div>
+                            <div class="table-cell select-row">
+                                <input id="radio5" name="level" checked type="radio"><label for="radio5">Label 5</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="radio6" name="level" type="radio"><label for="radio6">Label 6</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="radio7" name="level" type="radio"><label for="radio7">Label 7</label>
+                            </div>
+                        </div>
+                        <div class="table-col value-col">
+                            <div class="table-cell-head">Ember</div>
+                            <div class="table-cell">
+                                <input id="ember1" name="pointselect" type="radio"><label for="ember1">1</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="ember2" name="pointselect" type="radio"><label for="ember2">60</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="ember3" name="pointselect" type="radio"><label for="ember3">600</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="ember4" name="pointselect" type="radio"><label for="ember4">6,000</label>
+                            </div>
+                            <div class="table-cell select-row">
+                                <input id="ember5" name="pointselect" type="radio"><label for="ember5">60,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="ember6" name="pointselect" type="radio"><label for="ember6">6,00,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="ember7" name="pointselect" type="radio"><label for="ember7">60,00,000</label>
+                            </div>
+                        </div>
+                        <div class="table-col table-or">
+                            <div class="table-cell">
+                                <p>or</p>
+                            </div>
+                        </div>
+                        <div class="table-col value-col">
+                            <div class="table-cell-head">Hero Points</div>
+                            <div class="table-cell">
+                                <input id="heroPoint1" name="pointselect" type="radio"><label for="heroPoint1">1</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="heroPoint2" name="pointselect" type="radio"><label for="heroPoint2">60</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="heroPoint3" name="pointselect" type="radio"><label for="heroPoint3">600</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="heroPoint4" name="pointselect" type="radio"><label for="heroPoint4">6,000</label>
+                            </div>
+                            <div class="table-cell select-row">
+                                <input id="heroPoint5" checked name="pointselect" type="radio"><label for="heroPoint5"><img src="/ve/checked.png" alt=""> 60,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="heroPoint6" name="pointselect" type="radio"><label for="heroPoint6">6,00,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="heroPoint7" name="pointselect" type="radio"><label for="heroPoint7">60,00,000</label>
+                            </div>
+                        </div>
+                        <div class="table-col table-or">
+                            <div class="table-cell">
+                                <p>or</p>
+                            </div>
+                        </div>
+                        <div class="table-col value-col">
+                            <div class="table-cell-head">Philosopher's Gems</div>
+                            <div class="table-cell">
+                                <input id="philosopher-gems1" name="pointselect" type="radio"><label for="philosopher-gems1">1</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-gems2" name="pointselect" type="radio"><label for="philosopher-gems2">60</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-gems3" name="pointselect" type="radio"><label for="philosopher-gems3">600</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-gems4" name="pointselect" type="radio"><label for="philosopher-gems4">6,000</label>
+                            </div>
+                            <div class="table-cell select-row">
+                                <input id="philosopher-gems5" name="pointselect" type="radio"><label for="philosopher-gems5">60,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-gems6" name="pointselect" type="radio"><label for="philosopher-gems6">6,00,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-gems7" name="pointselect" type="radio"><label for="philosopher-gems7">60,00,000</label>
+                            </div>
+                        </div>
+                        <div class="table-col table-or">
+                            <div class="table-cell">
+                                <p>or</p>
+                            </div>
+                        </div>
+                        <div class="table-col value-col">
+                            <div class="table-cell-head"><span>Hero Points</span><span>Ember</span></div>
+                            <div class="table-cell">
+                                <input id="hero-points-ember1" name="pointselect" type="radio"><label for="hero-points-ember1">1</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="hero-points-ember2" name="pointselect" type="radio"><label for="hero-points-ember2">60</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="hero-points-ember3" name="pointselect" type="radio"><label for="hero-points-ember3">600</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="hero-points-ember4" name="pointselect" type="radio"><label for="hero-points-ember4">6,000</label>
+                            </div>
+                            <div class="table-cell select-row">
+                                <input id="hero-points-ember5" name="pointselect" type="radio"><label for="hero-points-ember5">60,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="hero-points-ember6" name="pointselect" type="radio"><label for="hero-points-ember6">6,00,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="hero-points-ember7" name="pointselect" type="radio"><label for="hero-points-ember7">60,00,000</label>
+                            </div>
+                        </div>
+                        <div class="table-col table-or">
+                            <div class="table-cell">
+                                <p>or</p>
+                            </div>
+                        </div>
+                        <div class="table-col value-col">
+                            <div class="table-cell-head"><span>Philosopher's Gems</span><span>Ember</span></div>
+                            <div class="table-cell">
+                                <input id="philosopher-ember1" name="pointselect" type="radio"><label for="philosopher-ember1">1</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-ember2" name="pointselect" type="radio"><label for="philosopher-ember2">60</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-ember3" name="pointselect" type="radio"><label for="philosopher-ember3">600</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-ember4" name="pointselect" type="radio"><label for="philosopher-ember4">6,000</label>
+                            </div>
+                            <div class="table-cell select-row">
+                                <input id="philosopher-ember5" name="pointselect" type="radio"><label for="philosopher-ember5">60,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-ember6" name="pointselect" type="radio"><label for="philosopher-ember6">6,00,000</label>
+                            </div>
+                            <div class="table-cell">
+                                <input id="philosopher-ember7" name="pointselect" type="radio"><label for="philosopher-ember7">60,00,000</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="value-engine-btn">
+                    <button class="ctaButton"><span class="hotKey">C</span>Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
