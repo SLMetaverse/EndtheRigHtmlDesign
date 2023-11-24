@@ -1,3 +1,3 @@
 # EndtheRigHtmlDesign
 
-## This repo is controlled and allowed to push only to RajanPya.
+## This repo is controlled and allowed to push only to RajanPyak.
