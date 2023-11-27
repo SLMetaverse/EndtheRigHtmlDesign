@@ -135,8 +135,19 @@
         .table-wrapper .table-cell input{
             visibility: hidden;
         }
-        .table-wrapper .table-cell label{
+        .table-wrapper .col-level .table-cell{
+            min-width: 60px;
+        }
+        .table-wrapper .col-level .table-cell label{
             margin-left: 6px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding-top: 13px;
+            padding-left: 30px;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
         }
         .table-wrapper .table-cell{
             position: relative;
@@ -188,6 +199,7 @@
             height: 42px;
             border-right: 1px solid #a6c7eb59;
         }
+        .table-wrapper .table-cell.col-disabled{color: lightgray;background-color: #f2f2f261;pointer-events: none;}
         @media (max-width: 991px) {
             .mobile-menu{display: inline-block;}
             .mobile-menu img{max-width: 42px;}
@@ -227,10 +239,10 @@
                     <div class="table-wrapper">
                         <div class="table-col col-level">
                             <div class="table-cell-head">Level</div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="radio1" name="level" type="radio"><label for="radio1">Label 1</label>
                             </div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="radio2" name="level" type="radio"><label for="radio2">Label 2</label>
                             </div>
                             <div class="table-cell">
@@ -251,10 +263,10 @@
                         </div>
                         <div class="table-col value-col">
                             <div class="table-cell-head">Ember</div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="ember1" name="pointselect" type="radio"><label for="ember1">1</label>
                             </div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="ember2" name="pointselect" type="radio"><label for="ember2">60</label>
                             </div>
                             <div class="table-cell">
@@ -280,10 +292,10 @@
                         </div>
                         <div class="table-col value-col">
                             <div class="table-cell-head">Hero Points</div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="heroPoint1" name="pointselect" type="radio"><label for="heroPoint1">1</label>
                             </div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="heroPoint2" name="pointselect" type="radio"><label for="heroPoint2">60</label>
                             </div>
                             <div class="table-cell">
@@ -309,10 +321,10 @@
                         </div>
                         <div class="table-col value-col">
                             <div class="table-cell-head">Philosopher's Gems</div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="philosopher-gems1" name="pointselect" type="radio"><label for="philosopher-gems1">1</label>
                             </div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="philosopher-gems2" name="pointselect" type="radio"><label for="philosopher-gems2">60</label>
                             </div>
                             <div class="table-cell">
@@ -338,10 +350,10 @@
                         </div>
                         <div class="table-col value-col">
                             <div class="table-cell-head"><span>Hero Points</span><span>Ember</span></div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="hero-points-ember1" name="pointselect" type="radio"><label for="hero-points-ember1">1</label>
                             </div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="hero-points-ember2" name="pointselect" type="radio"><label for="hero-points-ember2">60</label>
                             </div>
                             <div class="table-cell">
@@ -367,10 +379,10 @@
                         </div>
                         <div class="table-col value-col">
                             <div class="table-cell-head"><span>Philosopher's Gems</span><span>Ember</span></div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="philosopher-ember1" name="pointselect" type="radio"><label for="philosopher-ember1">1</label>
                             </div>
-                            <div class="table-cell">
+                            <div class="table-cell col-disabled">
                                 <input id="philosopher-ember2" name="pointselect" type="radio"><label for="philosopher-ember2">60</label>
                             </div>
                             <div class="table-cell">
