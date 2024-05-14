@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription New</title>
+    <style>
+        html,body{margin: 0;padding:0;font-family: 'poppins', sans-serif;}
+        a{cursor: pointer;}
+        .subscription-body{
+            background-color: #1D1D22;
+            background-image: url(/sub_bg.png);
+            background-size: cover;
+            min-height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .header-wrapper{background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(15, 32, 51, 0.00) 100%);height: 80px;}
+        .header{max-width:100%;margin: 0 auto;display: flex;justify-content: space-between;align-items: center;}
+        .header-logo img{max-height: 60px;padding:8px 20px;}
+        .header-logo,.header-nav{display: inline-block;margin:0;padding:0;vertical-align: middle;}
+        .header-nav {text-align: right;}
+        .header-nav ul{margin: 0;background-color:#263049;padding: 27px 20px;height: 26px; position:relative;}
+        .header-nav ul::before{
+            position:absolute;
+            content:'';
+            width: 60px;
+            height: 80px;
+            transform: skew(20deg);
+            background: #263049;
+            top:0;
+            left:-40px;
+            z-index: 1;
+        }
+        .header-nav ul::after{
+            position:absolute;
+            content:'';
+            width: 60px;
+            height: 80px;
+            transform: skew(20deg);
+            background: #B15AA4;
+            top:0;
+            left:-50px;
+            z-index: 0;
+        }
+        .header-nav ul li{display: inline-block; vertical-align: middle;}
+        .header-nav ul li:last-child{margin-left: 20px;}
+        .header-nav ul li a{padding: 10px 16px;color: #E0E0E0;text-decoration: none;font-size: 16px;font-weight: bold;text-transform: uppercase;}
+        .header-nav ul li a img{vertical-align: bottom; margin-left: 4px;max-width: 24px;}
+        .header-nav ul li a:hover{color: #B15AA4;}
+        .header-nav ul li.navActive a{color: #B15AA4;}
+        .hero-wrapper{position: relative;}
+        .hero{width: 90%;max-width:1200px;margin: 20px auto;color: white;min-height: calc(100vh - 120px);position: relative;text-align: center;display: flex;justify-content: center;align-items: center;}
+        .subscription-wrapper h1{
+            color:#C1C1E1;
+            margin:4px;
+        }
+        .subscription-wrapper{
+            background-color: #263049;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .subscription-wrapper h3{
+            font-size: 24px;
+            line-height: 1;
+            margin:4px;
+        }
+        .subscription-wrapper h2{
+            color: #C1C1E1;
+            font-size: 34px;
+            line-height: 1;
+            margin: 12px 0 0 0;
+        }
+        .pricingDiv{display: flex;}
+        .pricingMain{
+            border:1px solid #51596D;
+            padding: 20px 16px;
+            margin: 8px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+        .pricingMain ul.subFeatures, .pricingMain ul.mainFeatures{
+            margin:0;
+            padding:0;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+            margin-top: 12px;
+        }
+        .pricingMain ul.mainFeatures li{
+            flex-basis: calc(33.33% - 10px);
+            box-sizing: border-box;
+            list-style: none;
+            padding: 8px;
+            background-color: #8C8CC7;
+            margin: 5px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .pricingMain ul.subFeatures li{
+            flex-basis: calc(50% - 10px);
+            box-sizing: border-box;
+            margin: 5px;
+            font-size: 12px;
+        }
+        .pricingDescription {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 8px;
+        }
+        .pricingMain .subscribeBtn{
+            padding: 12px 20px;
+            background-color: #B15AA4;
+            font-weight: bold;
+            color: white;
+            font-size: 24px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            border-top: 2px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 3px solid rgba(0, 0, 0, 0.15);
+            margin-top: 12px;
+        }
+        .hero-image{
+            position:absolute;
+            right: -200px;
+            bottom: 0;
+        }
+        .mobile-menu{display: none;padding:18px;}
+        @media (max-width: 1080px) {
+            .hero-content .hero-main-top{
+                display: block;
+            }
+            .hero-content .main-action{margin-left: 0px;}
+            .hero-content{margin: 0 auto;}
+            .hero{
+                display: block;
+                height: unset;
+                text-align: center;
+            }
+            .download-body{height: 100%;}
+            .hero-wrapper{height: unset;}
+            .mobile-menu{display: inline-block;}
+            .mobile-menu img{max-width: 42px;}
+            .header-nav{display: none;}
+            .pricingMain ul.mainFeatures li{
+                flex-basis: calc(50% - 10px);
+            }
+            .pricingMain ul.subFeatures li{
+                flex-basis: calc(100% - 10px);
+            }
+        }
+        @media (max-width: 767px) {
+            .pricingDiv{
+                display: block;
+            }
+            .hero-image{text-align: center;position: relative;bottom:unset;right:unset;margin-top: 10px;}
+            .hero-image img{max-height: 400px;}
+            .hero-wrapper .hero{margin-bottom:0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="subscription-body">
+        <div class="header-wrapper">
+            <div class="header">
+                <div class="header-logo">
+                    <a href="/index.html"><img src="logo.png" alt=""></a>
+                </div>
+                <div class="header-nav"> 
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li class="navActive"><a href="subscriptionNew.html">Plans </a></li>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="valueEngine.html">More <img src="more.png" alt=""></a></li>
+                        <li class="login-btn"><a href="#">Login <img src="gear.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="mobile-menu">
+                    <a href="#"><img src="mobile-menu.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wrapper">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="subscription-wrapper">
+                        <h1>Change Starts Here</h1>
+                        <p class="pricingDescription">Your actions extend beyond our pixels, they become a force of positive change in the world you actually live in. Don’t settle for the status quo; subscribe now to be a vital part of the movement to End the Rig!</p>
+                        <div class="pricingDiv">
+                            <div class="pricingMain">
+                                <h3>Subscription Tier I</h3>
+                                <h2>$9.99</h2>
+                                <p>Subscribe today to discover further details and help the underground help citizens by tackling key issues in:</p>
+                                <ul class="mainFeatures">
+                                    <li>Rent</li>
+                                    <li>Libertarian</li>
+                                    <li>Macro-Econ</li>
+                                    <li>Inflation</li>
+                                    <li>Taxes</li>
+                                    <li>Fix Congress</li>
+                                </ul>
+                                <ul class="subFeatures">
+                                    <li>3 Gem Ports Max.</li>
+                                    <li>Discover Corruption In Capital Hill</li>
+                                    <li>Gain access to The Philosophy Center</li>
+                                    <li>Customize Your Character</li>
+                                </ul>
+                                <button class="subscribeBtn">Subscribe</button>
+                            </div>
+                            <div class="pricingMain">
+                                <h3>Subscription Tier II</h3>
+                                <h2>$19.99</h2>
+                                <p>Can’t get enough of fixing the problems caused by corruption in our country? Subscribe to Tier II and you’ll get:</p>
+                                <ul class="mainFeatures">
+                                    <li>Everything in Tire I</li>
+                                    <li>Economics</li>
+                                    <li>Political Science</li>
+                                    <li>Philosophy</li>
+                                    <li>History</li>
+                                    <li>Crypto Currency</li>
+                                </ul>
+                                <ul class="subFeatures">
+                                    <li>5 Gem Ports Max.</li>
+                                    <li>Access to the Damage Report</li>
+                                    <li>Unlock Your Own Tower Home</li>
+                                    <li>Access to Value Engine for Embers</li>
+                                </ul>
+                                <button class="subscribeBtn">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="fe_ch.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
